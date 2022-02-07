@@ -1,28 +1,42 @@
 package com.wolffdev.bugtrackerv2;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.wolffdev.bugtrackerv2.domain.Bug;
+import com.wolffdev.bugtrackerv2.domain.BugRepository;
+import com.wolffdev.bugtrackerv2.domain.Developer;
+import com.wolffdev.bugtrackerv2.domain.DeveloperRepository;
+
 
 
 @SpringBootApplication
 public class Bugtrackerv2Application {
-	private static final Logger logger = LoggerFactory.getLogger(Bugtrackerv2Application.class);
+	@Autowired
+	private BugRepository repository;
+	@Autowired
+	private DeveloperRepository derepository;
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(Bugtrackerv2Application.class, args);
-		logger.info("Hello Spring Boot");
+	}
+	@Bean
 
-		@Bean
+	CommandLineRunner runner(){
+		return args -> {
+			Developer developer1 = new Developer("Tuukka", "Hartikainen");
+			derepository.save(developer1);
 
-		CommandLineRunner runner(){
-			return args -> {
-				repository.save(new Bug(1,'jaa', 'Vastaanotettu', 1,3));
-			};
-		}
+
+			repository.save(new Bug("UI ois jees", "Vastaanotettu", 1,3, developer1));
+			repository.save(new Bug("Tunnistautuminen tarvitaan", "Vastaanotettu", 1,3, developer1));
+
+		};
 	}
 
 }
