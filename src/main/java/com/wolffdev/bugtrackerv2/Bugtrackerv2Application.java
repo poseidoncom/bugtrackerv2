@@ -30,11 +30,14 @@ public class Bugtrackerv2Application {
 	CommandLineRunner runner(){
 		return args -> {
 			Developer developer1 = new Developer("Tuukka", "Hartikainen");
+			Developer developer2 = new Developer("Perttu", "Matikainen");
 			derepository.save(developer1);
+			derepository.save(developer2);
 
 
 			repository.save(new Bug("UI ois jees", "Vastaanotettu", 1,3, developer1));
-			repository.save(new Bug("Tunnistautuminen tarvitaan", "Vastaanotettu", 1,3, developer1));
+			repository.save(new Bug("Tunnistautuminen tarvitaan", "Vastaanotettu", 1,3, developer2));
+			repository.save(new Bug("bugiin liitetyn devaajan tietojen haussa ongelmisa restapin kautta", "Vastaanotettu", 3,5, developer2));
 
 		};
 	}

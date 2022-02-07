@@ -1,6 +1,13 @@
 package com.wolffdev.bugtrackerv2.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Bug {
@@ -11,6 +18,7 @@ public class Bug {
     private int date, criticality;
 
     @ManyToOne(fetch = FetchType.LAZY)
+
     @JoinColumn(name = "developer")
     private Developer developer;
 
@@ -21,6 +29,7 @@ public class Bug {
     }
 
     public Bug(String description, String state, int date, int criticality, Developer developer) {
+        super();
         this.description = description;
         this.state = state;
         this.date = date;
@@ -40,13 +49,6 @@ public class Bug {
         this.developer = developer;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getDescription() {
         return description;
