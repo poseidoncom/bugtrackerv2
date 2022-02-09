@@ -15,7 +15,7 @@ public class Bug {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private String description, state;
-    private int date, criticality;
+    private int votes, criticality;
 
     @ManyToOne(fetch = FetchType.LAZY)
 
@@ -28,11 +28,10 @@ public class Bug {
     public Bug() {
     }
 
-    public Bug(String description, String state, int date, int criticality, Developer developer) {
+    public Bug(String description, String state, int criticality, Developer developer) {
         super();
         this.description = description;
         this.state = state;
-        this.date = date;
         this.criticality = criticality;
         this.developer = developer;
     }
@@ -66,12 +65,12 @@ public class Bug {
         this.state = state;
     }
 
-    public int getDate() {
-        return date;
+    public int getVotes() {
+        return votes;
     }
 
-    public void setDate(int date) {
-        this.date = date;
+    public void setVotes(int votes) {
+        this.votes = votes;
     }
 
     public int getCriticality() {

@@ -32,9 +32,9 @@ public class Bugtrackerv2Application {
 			drepository.save(developer2);
 
 
-			repository.save(new Bug("UI ois jees", "Vastaanotettu", 1,3, developer1));
-			repository.save(new Bug("Tunnistautuminen tarvitaan", "Vastaanotettu", 1,3, developer2));
-			repository.save(new Bug("bugiin liitetyn devaajan tietojen haussa ongelmisa restapin kautta", "Vastaanotettu", 3,5, developer2));
+			repository.save(new Bug("UI ois jees", "Vastaanotettu",3, developer1));
+			repository.save(new Bug("Tunnistautuminen tarvitaan", "Vastaanotettu",3, developer2));
+			repository.save(new Bug("bugiin liitetyn devaajan tietojen haussa ongelmisa restapin kautta", "Vastaanotettu",5, developer2));
 
 			// username: user password: tuukka
 			urepository.save(new User("user",
